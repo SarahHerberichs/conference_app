@@ -1,5 +1,6 @@
 import { AwilixContainer } from "awilix";
 import express, { Application } from "express";
+import container from "../../app/injection/dependency-injection";
 import { errorHandlerMiddleware } from "../../app/middlewares/error-handler.middleware";
 import { jsonResponseMiddleware } from "../../app/middlewares/json-response.middleware";
 import { conferenceRoutes } from "../../routes/conference.routes";
@@ -11,7 +12,7 @@ export class TestApp {
 
   constructor() {
     this.app = express();
-    this.container = this.container;
+    this.container = container;
   }
   async setup() {
     this.app.use(express.json());

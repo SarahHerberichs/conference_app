@@ -4,7 +4,7 @@ import { IDateGenerator } from "../../interfaces/date-generator.interface";
 import { IIDGenerator } from "../../interfaces/id-generator.interface";
 import { InMemoryConferenceRepository } from "../../repositories/in-memory-conference-repository";
 import { InMemoryUserRepository } from "../../repositories/in-memory-user-repository";
-import { BasicAuthenticator } from "../../services/basic-authenticator";
+import { JwtAuthenticator } from "../../services/jwt-authenticator";
 import { OrganizeConference } from "../../usecases/organize-conference";
 import { CurrentDateGenerator } from "../../utils/current-date-generator";
 import { UUIDGenerator } from "../../utils/uuid-generator";
@@ -34,7 +34,7 @@ container.register({
   organizeConferenceUsecase: asValue(
     new OrganizeConference(conferenceRepository, idGenerator, dateGenerator)
   ),
-  authenticator: asValue(new BasicAuthenticator(userRepository)),
+  authenticator: asValue(new JwtAuthenticator(userRepository)),
 });
 
 export default container;
